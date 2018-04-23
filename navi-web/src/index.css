@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;  
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+@media all and (max-width: 800px) {
+  .hide-on-small-screen {
+    display: none;
+  }
+}
