@@ -19,8 +19,8 @@ export default class Home extends Component {
       <ContentWrapper>
         <Container>
           <HomeContainer>
-            <DeploymentSection />
             <StatisticSection />
+            <DeploymentSection />
             <EnvironmentSection />
           </HomeContainer>
         </Container>

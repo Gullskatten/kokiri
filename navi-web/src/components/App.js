@@ -15,6 +15,12 @@ class App extends Component {
             <Navbar />
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route exact path="/deployments/overview" component={Home} />
+              <Route exact path="/deployments/new" component={Home} />
+              <Route exact path="/deployments/manage" component={Home} />
+              <Route exact path="/environments/overview" component={Home} />
+              <Route exact path="/environments/new" component={Home} />
+              <Route exact path="/environments/manage" component={Home} />
               <Route component={NoMatch} />
             </Switch>
           </div>
