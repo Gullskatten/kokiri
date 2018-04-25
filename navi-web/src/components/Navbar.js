@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import styled, {css, keyframes} from 'styled-components';
-import logo from '../assets/img/navi/navi1.png';
-import FontAwesome from 'react-fontawesome';
+import React, { Component } from "react";
+import styled, { css, keyframes } from "styled-components";
+import logo from "../assets/img/navi/navi1.png";
+import FontAwesome from "react-fontawesome";
 
 const NavbarWrapper = styled.nav`
   height: 60px;
@@ -23,9 +23,8 @@ const Logo = styled.img`
   height: 35px;
   margin-bottom: 5px;
   display: inline-block;
-  animation: ${float} 2s cubic-bezier(.61,.32,.86,.83) infinite;
+  animation: ${float} 2s cubic-bezier(0.61, 0.32, 0.86, 0.83) infinite;
 `;
-
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -34,25 +33,25 @@ const FlexWrapper = styled.div`
   ${props =>
     props.centered &&
     css`
-    width: 100%;
-    align-items: center;
+      width: 100%;
+      align-items: center;
     `};
-  `;
+`;
 
 const AppTitle = styled.h2`
-    margin: 0;
-    font-family: 'Grand Hotel', cursive;
-    font-size: 2.5rem;
-    font-weight: normal;
-`;  
+  margin: 0;
+  font-family: "Grand Hotel", cursive;
+  font-size: 2.5rem;
+  font-weight: normal;
+`;
 
 const AppBrandWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    img {
-      margin-right: 10px;
-    }
-    `;
+  display: flex;
+  align-items: center;
+  img {
+    margin-right: 10px;
+  }
+`;
 
 const AccountInfoWrapper = styled.div``;
 
@@ -61,10 +60,10 @@ export default class Navbar extends Component {
     return (
       <NavbarWrapper>
         <FlexWrapper centered>
-        <AppBrandWrapper>
-          <Logo src={logo} alt="logo" />
-          <AppTitle>Navi</AppTitle>
-        </AppBrandWrapper>
+          <AppBrandWrapper>
+            <Logo src={logo} alt="logo" />
+            <AppTitle>Navi</AppTitle>
+          </AppBrandWrapper>
           <AccountInfoWrapper>
             <FontAwesome name="user" /> Navi
           </AccountInfoWrapper>
