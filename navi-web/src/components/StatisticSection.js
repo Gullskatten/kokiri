@@ -9,7 +9,6 @@ import FontAwesome from "react-fontawesome";
 export const StatisticSection = () => {
   return (
     <Section>
-      <TitleLarge darkest>Overview</TitleLarge>
       <ColumnedFlexWrapper>
         <CircularWrapper darkest>
           <TitleMediumThin alternative>Environments</TitleMediumThin>
