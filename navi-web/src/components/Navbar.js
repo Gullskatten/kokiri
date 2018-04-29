@@ -1,22 +1,20 @@
 import React, { Component } from "react";
-import styled, { css, keyframes } from "styled-components";
-import logo from "../assets/img/navi/navi1.png";
+import styled, { css } from "styled-components";
+import logo from "../assets/img/navi/navi5.png";
 import FontAwesome from "react-fontawesome";
+import {float} from '../utils/CommonAnimations';
+import { Link } from "react-router-dom";
 
 const NavbarWrapper = styled.nav`
+  position: sticky;
+  top: 0;
   height: 60px;
   width: 100%;
-  background: #222;
-  border-bottom: 2px solid #444;
+  background: #fff;
   line-height: 60px;
   padding: 0 2rem;
-  color: #fff;
-`;
-
-const float = keyframes`
-  50% {
-  transform: translateY(4px);
-  }
+  color: ${props => props.theme.normal};
+  z-index: 1;
 `;
 
 const Logo = styled.img`
@@ -45,27 +43,40 @@ const AppTitle = styled.h2`
   font-weight: normal;
 `;
 
-const AppBrandWrapper = styled.div`
+const AppBrandWrapper = styled(({ active, ...rest }) => <Link {...rest} />)`
   display: flex;
   align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: ${props => props.theme.darkest};
   img {
     margin-right: 10px;
   }
 `;
 
-const AccountInfoWrapper = styled.div``;
+const AccountInfoWrapper = styled.div`
+  cursor: pointer;
+
+  span {
+    color: ${props => props.theme.darkest}
+    
+    &:first-child {
+      margin-right: 5px;
+    }
+  }
+`;
 
 export default class Navbar extends Component {
   render() {
     return (
       <NavbarWrapper>
         <FlexWrapper centered>
-          <AppBrandWrapper>
+          <AppBrandWrapper to="/">
             <Logo src={logo} alt="logo" />
             <AppTitle>Navi</AppTitle>
           </AppBrandWrapper>
           <AccountInfoWrapper>
-            <FontAwesome name="user" /> Navi
+            <FontAwesome name="user" /> <span>Navii93</span>
           </AccountInfoWrapper>
         </FlexWrapper>
       </NavbarWrapper>

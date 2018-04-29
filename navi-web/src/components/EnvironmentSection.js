@@ -1,15 +1,19 @@
 import React from "react";
 import { Section } from "./Section";
-import Card, {CardsContainer} from "./Card";
-import {TitleLargeBold} from './StyledTitles';
+import Card, { CardsContainer } from "./Card";
+import { TitleLarge } from "./StyledTitles";
 
 export const EnvironmentSection = () => {
   return (
     <Section>
-      <TitleLargeBold>Environments</TitleLargeBold>
+      <TitleLarge darkest>Environments</TitleLarge>
       <CardsContainer>
-        <Card title="Environment Overview" icon="server" path="environments/overview" />
         <Card title="Create New" icon="plus" path="environments/new" />
+        <Card
+          title="Environment Overview"
+          icon="server"
+          path="environments/overview"
+        />
         <Card
           title="Manage Environments"
           icon="sliders"

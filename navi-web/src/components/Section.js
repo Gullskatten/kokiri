@@ -1,6 +1,31 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const Section = styled.div`
-    border-bottom: 1px solid #eee;
     width: 100%;
+    
+  ${props =>
+    props.darkest &&
+    css`
+      background: ${props => props.theme.darkest};
+    `};
+  ${props =>
+    props.dark &&
+    css`
+      background: ${props => props.theme.dark};
+    `};
+  ${props =>
+    props.normal &&
+    css`
+      background: ${props => props.theme.normal};
+    `};
+  ${props =>
+    props.light &&
+    css`
+      background: ${props => props.theme.light};
+    `};
+  ${props =>
+    props.lightest &&
+    css`
+      background: ${props => props.theme.lightest};
+    `};
 `;

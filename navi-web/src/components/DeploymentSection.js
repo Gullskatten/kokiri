@@ -1,21 +1,27 @@
 import React from "react";
 import { Section } from "./Section";
 import Card, { CardsContainer } from "./Card";
-import {TitleLargeBold} from './StyledTitles';
+import { TitleLarge } from "./StyledTitles";
+import { SectionDivider } from "./Dividers";
 
 export const DeploymentSection = () => {
   return (
     <Section>
-      <TitleLargeBold>Deployments</TitleLargeBold>
+      <TitleLarge darkest>Deployments</TitleLarge>
       <CardsContainer>
-        <Card title="Deployment Overview" icon="cube" path="deployments/overview" />
         <Card title="Create New" icon="plus" path="deployments/new" />
+        <Card
+          title="Deployment Overview"
+          icon="cube"
+          path="deployments/overview"
+        />
         <Card
           title="Manage Deployments"
           icon="sliders"
           path="deployments/manage"
         />
       </CardsContainer>
+      <SectionDivider/>
     </Section>
   );
 };
