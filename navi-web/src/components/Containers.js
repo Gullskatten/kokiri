@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 export const ContentWrapper = styled.div`
   position: relative;
-  top: 2rem;
   width: 100%;
+  margin-top: 2rem;
   margin-bottom: 100px;
 `;
 

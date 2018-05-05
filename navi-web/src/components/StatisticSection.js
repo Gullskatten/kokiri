@@ -1,6 +1,6 @@
 import React from "react";
 import { Section } from "./Section";
-import { TitleLarge, TitleMediumThin } from "./StyledTitles";
+import { TitleMediumThin } from "./StyledTitles";
 import { SectionDivider } from "./Dividers";
 import { CircularWrapper, ColumnedFlexWrapper } from "./Common";
 import { StyledMessage } from "./StyledMessages";

@@ -11,7 +11,9 @@ const HomeContainer = styled.div`
   border: 1px solid #eee;
   border-radius: 5px;
   padding: 20px;
+  background: #fff;
 `;
+
 
 export default class Home extends Component {
   render() {
@@ -19,8 +21,8 @@ export default class Home extends Component {
       <div>
         <ContentWrapper>
           <Container>
-            <TitleHuge normal alternative>
-              Dashboard
+            <TitleHuge white alternative>
+                Dashboard
             </TitleHuge>
             <HomeContainer>
               <StatisticSection />

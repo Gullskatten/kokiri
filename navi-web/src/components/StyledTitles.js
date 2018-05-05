@@ -29,6 +29,11 @@ export const TitleHuge = styled.h1`
       color: ${props => props.theme.lightest};
     `};
   ${props =>
+    props.white &&
+    css`
+      color: #fff;
+    `};
+  ${props =>
     props.alternative &&
     css`
       font-family: "Grand Hotel", cursive;
@@ -73,6 +78,13 @@ export const TitleLarge = styled.h2`
     css`
       color: ${props => props.theme.lightest};
     `};
+
+  ${props =>
+    props.white &&
+    css`
+      color: #fff;
+    `};
+
   ${props =>
     props.alternative &&
     css`

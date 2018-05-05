@@ -8,7 +8,7 @@ import registerServiceWorker from "./registerServiceWorker";
 
 const app = (
   <ThemeProvider theme={theme}>
-    <App />
+    <App/>
   </ThemeProvider>
 );
 ReactDOM.render(app, document.getElementById("root"));

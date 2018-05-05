@@ -1,27 +1,30 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
-import logo from "../assets/img/navi/navi5.png";
-import FontAwesome from "react-fontawesome";
-import {float} from '../utils/CommonAnimations';
 import { Link } from "react-router-dom";
+import { TitleHuge } from "./StyledTitles";
 
-const NavbarWrapper = styled.nav`
+import thumb from "../assets/img/oot/PNG/kokiri_sword.png";
+
+const NavbarWrapper = styled.div`
   position: sticky;
-  top: 0;
+  top: 15px;
   height: 60px;
   width: 100%;
-  background: #fff;
-  line-height: 60px;
   padding: 0 2rem;
   color: ${props => props.theme.normal};
   z-index: 1;
+
+  @media all and (max-width: 1600px) {
+    position: relative;
+  }
 `;
 
-const Logo = styled.img`
-  height: 35px;
-  margin-bottom: 5px;
-  display: inline-block;
-  animation: ${float} 2s cubic-bezier(0.61, 0.32, 0.86, 0.83) infinite;
+const CircularProfileThumb = styled.img`
+  height: 30px;
+  width: 30px;
+  background-image: linear-gradient(to top, #ff766f 0%, #ffae4a 100%);
+  border-radius: 50%;
+  padding: 3px;
 `;
 
 const FlexWrapper = styled.div`
@@ -36,33 +39,40 @@ const FlexWrapper = styled.div`
     `};
 `;
 
-const AppTitle = styled.h2`
-  margin: 0;
-  font-family: "Grand Hotel", cursive;
-  font-size: 2.5rem;
-  font-weight: normal;
-`;
-
 const AppBrandWrapper = styled(({ active, ...rest }) => <Link {...rest} />)`
   display: flex;
   align-items: center;
   cursor: pointer;
   text-decoration: none;
-  color: ${props => props.theme.darkest};
+  color: #fff;
+  padding: 3px 7px;
+  border-radius: 20px;
   img {
     margin-right: 10px;
   }
 `;
 
 const AccountInfoWrapper = styled.div`
+  align-items: center;
+  border-radius: 20px;
+  background: ${props => props.theme.normalWithAlpha};
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0.4rem 0.8rem;
+  text-align: center;
 
   span {
-    color: ${props => props.theme.darkest}
-    
-    &:first-child {
-      margin-right: 5px;
-    }
+    color: #fff;
+    font-size: 1.2rem;
+    margin-left: 10px;
+    margin-bottom: 3px;
+  }
+
+  &:hover {
+    transition: background 0.5s ease;
+    background: ${props => props.theme.normal};
   }
 `;
 
@@ -72,11 +82,13 @@ export default class Navbar extends Component {
       <NavbarWrapper>
         <FlexWrapper centered>
           <AppBrandWrapper to="/">
-            <Logo src={logo} alt="logo" />
-            <AppTitle>Navi</AppTitle>
+            <TitleHuge white alternative>
+              Kokiri
+            </TitleHuge>
           </AppBrandWrapper>
           <AccountInfoWrapper>
-            <FontAwesome name="user" /> <span>Navii93</span>
+            <CircularProfileThumb src={thumb} alt="navii93" />{" "}
+            <span>oboygutt</span>
           </AccountInfoWrapper>
         </FlexWrapper>
       </NavbarWrapper>
