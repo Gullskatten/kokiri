@@ -1,3 +1,3 @@
 # Kokiri [WIP]
 
-A live version can be found [here](kokiri.netlify.com).
+A live version can be found [here](https://kokiri.netlify.com).
