@@ -3,7 +3,13 @@ import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import { TitleHuge } from "./StyledTitles";
 
+import dark from "../utils/theme.dark";
+import sunset from "../utils/theme.sunset";
+import theme from "../utils/theme";
+
 import thumb from "../assets/img/oot/PNG/kokiri_sword.png";
+import ThemeContainer from "../containers/ThemeContainer";
+import { Subscribe } from "unstated";
 
 const NavbarWrapper = styled.div`
   position: sticky;
@@ -22,11 +28,33 @@ const NavbarWrapper = styled.div`
 const CircularProfileThumb = styled.img`
   height: 30px;
   width: 30px;
-  background-image: linear-gradient(to top, #ff766f 0%, #ffae4a 100%);
+  background-image: linear-gradient(
+    to top,
+    ${props => props.theme.backgroundTop} 0%,
+    ${props => props.theme.backgroundBottom} 100%
+  );
   border-radius: 50%;
   padding: 3px;
 `;
 
+const CircularOption = styled.div`
+  height: 25px;
+  width: 25px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  background-image: linear-gradient(
+    to top,
+    ${props => props.backgroundTop} 0%,
+    ${props => props.backgroundBottom} 100%
+  );
+
+  ${props =>
+    props.selected &&
+    css`
+      border: 2px solid #fff;
+    `};
+`;
 const FlexWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -76,22 +104,53 @@ const AccountInfoWrapper = styled.div`
   }
 `;
 
+const ThemeOptions = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5px;
+`;
+
 export default class Navbar extends Component {
+  renderOptions = (selectedTheme, themes, changeTheme) => {
+    return themes.map((theme, idx) => {
+      return (
+        <CircularOption
+          selected={selectedTheme.key === theme.key}
+          key={idx}
+          backgroundTop={theme.backgroundTop}
+          backgroundBottom={theme.backgroundBottom}
+          onClick={() => changeTheme(theme)}
+        />
+      );
+    });
+  };
+
   render() {
     return (
-      <NavbarWrapper>
-        <FlexWrapper centered>
-          <AppBrandWrapper to="/">
-            <TitleHuge white alternative>
-              Kokiri
-            </TitleHuge>
-          </AppBrandWrapper>
-          <AccountInfoWrapper>
-            <CircularProfileThumb src={thumb} alt="navii93" />{" "}
-            <span>oboygutt</span>
-          </AccountInfoWrapper>
-        </FlexWrapper>
-      </NavbarWrapper>
+      <Subscribe to={[ThemeContainer]}>
+        {({ state, changeTheme }) => {
+          return (
+            <NavbarWrapper>
+              <FlexWrapper centered>
+                <AppBrandWrapper to="/">
+                  <TitleHuge white alternative>
+                    Kokiri
+                  </TitleHuge>
+                </AppBrandWrapper>
+                <div>
+                  <AccountInfoWrapper>
+                    <CircularProfileThumb src={thumb} alt="navii93" />{" "}
+                    <span>oboygutt</span>
+                  </AccountInfoWrapper>
+                  <ThemeOptions>
+                    {this.renderOptions(state.selectedTheme, state.themes, changeTheme)}
+                  </ThemeOptions>
+                </div>
+              </FlexWrapper>
+            </NavbarWrapper>
+          );
+        }}
+      </Subscribe>
     );
   }
 }

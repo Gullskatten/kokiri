@@ -8,7 +8,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Quicksand', sans-serif;
-  background-image: linear-gradient(to top, #ff766f 0%, #ffae4a 100%);
 }
 
 @media all and (max-width: 800px) {

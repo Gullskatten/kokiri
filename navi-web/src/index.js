@@ -1,15 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import theme from "./utils/theme";
-import { ThemeProvider } from "styled-components";
+import { Provider } from "unstated";
+
 import App from "./components/App";
 import registerServiceWorker from "./registerServiceWorker";
 
 const app = (
-  <ThemeProvider theme={theme}>
-    <App/>
-  </ThemeProvider>
+  <Provider>
+    <App />
+  </Provider>
 );
 ReactDOM.render(app, document.getElementById("root"));
 registerServiceWorker();
