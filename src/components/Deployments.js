@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { ContentWrapper, Container, CardContainer } from "./Containers";
-import { DeploymentSection } from "./DeploymentSection";
-import { TitleHuge } from "./StyledTitles";
-import Return from './Return';
+import Return from "./Return";
+import RecentDeployments from "./RecentDeployments";
 
 export default class Deployments extends Component {
   render() {
@@ -10,9 +9,9 @@ export default class Deployments extends Component {
       <div>
         <ContentWrapper>
           <Container>
-            <Return/>
+            <Return label="Back to Dashboard" />
             <CardContainer>
-                <TitleHuge darkest>Recent Deployments</TitleHuge>
+              <RecentDeployments />
             </CardContainer>
           </Container>
         </ContentWrapper>
