@@ -4,6 +4,18 @@ export const TitleHuge = styled.h1`
   font-weight: 400;
 
   ${props =>
+    props.smallScreenAware &&
+    css`
+      @media all and (max-width: 700px) {
+        font-size: 1.3rem;
+      }
+    `};
+  ${props =>
+    props.tight &&
+    css`
+      margin: 0;
+    `};
+  ${props =>
     props.darkest &&
     css`
       color: ${props => props.theme.darkest};
@@ -53,6 +65,18 @@ export const TitleHugeThin = TitleHuge.extend`
 export const TitleLarge = styled.h2`
   font-weight: 400;
 
+  ${props =>
+    props.smallScreenAware &&
+    css`
+      @media all and (max-width: 700px) {
+        font-size: 1.2rem;
+      }
+    `};
+  ${props =>
+    props.tight &&
+    css`
+      margin: 0;
+    `};
   ${props =>
     props.darkest &&
     css`
@@ -105,6 +129,18 @@ export const TitleLargeThin = TitleLarge.extend`
 export const TitleMedium = styled.h3`
   font-weight: 400;
 
+  ${props =>
+    props.smallScreenAware &&
+    css`
+      @media all and (max-width: 700px) {
+        font-size: 1.1rem;
+      }
+    `};
+  ${props =>
+    props.tight &&
+    css`
+      margin: 0;
+    `};
   ${props =>
     props.darkest &&
     css`

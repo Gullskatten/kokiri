@@ -66,12 +66,27 @@ export const StyledMessage = styled.span`
     css`
       color: #fff;
     `};
-
   ${props =>
     props.boxed &&
     css`
       padding: 0.3rem 0.7rem;
       border-radius: 5px;
+    `};
+  ${props =>
+    props.showOnSmallScreen &&
+    css`
+      display: none;
+      @media all and (max-width: 700px) {
+        display: inline;
+      }
+    `};
+
+  ${props =>
+    props.hideOnSmallScreen &&
+    css`
+      @media all and (max-width: 700px) {
+        display: none;
+      }
     `};
 
   ${props =>
@@ -111,8 +126,22 @@ export const StyledMessage = styled.span`
     css`
       background: ${props => props.theme.lightest};
     `};
+  ${props =>
+    props.tinyUnderlined &&
+    css`
+      padding-bottom: 2px;
+      border-bottom: 1px solid ${props => props.theme.normal};
+    `};
 
-    span {
-        margin-left: 4px;
-    }
+  ${props =>
+    props.withIconRight &&
+    css`
+      margin-left: 4px;
+    `};
+
+    ${props =>
+      props.marginLeft10 &&
+      css`
+        margin-left: 10px;
+      `};
 `;

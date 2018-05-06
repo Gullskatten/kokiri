@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
-import { TitleHuge } from "./StyledTitles";
-
+import styled, { css } from "styled-components";
+import { Subscribe } from "unstated";
 import thumb from "../assets/img/oot/PNG/kokiri_sword.png";
 import ThemeContainer from "../containers/ThemeContainer";
-import { Subscribe } from "unstated";
+import { TitleHuge } from "./StyledTitles";
+
 
 const NavbarWrapper = styled.div`
   position: sticky;

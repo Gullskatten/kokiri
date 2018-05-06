@@ -42,7 +42,6 @@ class RecentDeployments extends Component {
           <DeploymentList deployments={recentDeployments} />
         )}
 
-        <SectionDivider />
       </Section>
     );
   }

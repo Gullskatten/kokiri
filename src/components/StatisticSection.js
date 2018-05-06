@@ -1,10 +1,10 @@
 import React from "react";
-import { Section } from "./Section";
-import { TitleMediumThin } from "./StyledTitles";
-import { SectionDivider } from "./Dividers";
-import { CircularWrapper, ColumnedFlexWrapper } from "./Common";
-import { StyledMessage } from "./StyledMessages";
 import FontAwesome from "react-fontawesome";
+import { CircularWrapper, ColumnedFlexWrapper } from "./Common";
+import { SectionDivider } from "./Dividers";
+import { Section } from "./Section";
+import { StyledMessage } from "./StyledMessages";
+import { TitleMediumThin } from "./StyledTitles";
 
 export const StatisticSection = () => {
   return (
@@ -27,7 +27,7 @@ export const StatisticSection = () => {
           3
         </CircularWrapper>
       </ColumnedFlexWrapper>
-      <StyledMessage bgDarkest boxed clickable tiny>
+      <StyledMessage bgDarkest boxed clickable tiny withIconRight>
         View more statistics <FontAwesome name="arrow-right" />
       </StyledMessage>
       <SectionDivider />

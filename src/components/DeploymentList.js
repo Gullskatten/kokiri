@@ -3,9 +3,12 @@ import styled from "styled-components";
 import Deployment from "./Deployment";
 
 const DeploymentListWrapper = styled.div`
-  display: flex;
+  display: block;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+`;
+const DeploymentPadder = styled.div`
+  margin: 10px 0;
 `;
 
 class DeploymentList extends Component {
@@ -15,7 +18,7 @@ class DeploymentList extends Component {
     console.log(deployments);
 
     return deployments.map((deployment, idx) => {
-      return <Deployment key={idx} deployment={deployment} />;
+      return <DeploymentPadder><Deployment key={idx} deployment={deployment} /></DeploymentPadder>;
     });
   };
 

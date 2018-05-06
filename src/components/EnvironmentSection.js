@@ -1,6 +1,6 @@
 import React from "react";
-import { Section } from "./Section";
 import Card, { CardsContainer } from "./Card";
+import { Section } from "./Section";
 import { TitleLarge } from "./StyledTitles";
 
 export const EnvironmentSection = () => {
