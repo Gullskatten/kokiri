@@ -91,3 +91,27 @@ export const ColumnedFlexWrapper = styled.div`
     display: block;
   }
 `;
+
+
+export const CircularIcon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid #eee;
+  background: #fff;
+
+  ${props =>
+    props.small &&
+    css`
+      width: 60px;
+      height: 60px;
+    `};
+
+  @media all and (max-width: 700px) {
+    display: none;
+  }
+`;

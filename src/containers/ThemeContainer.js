@@ -1,8 +1,7 @@
 import { Container } from 'unstated';
-import defaultTheme from '../utils/theme';
-import sunset from '../utils/theme.sunset';
 import dark from '../utils/theme.dark';
-import sprinkels from '../utils/theme.dark';
+import defaultTheme from '../utils/theme.default';
+import sunset from '../utils/theme.sunset';
 
 export default class ThemeContainer extends Container {
     state = {

@@ -6,7 +6,6 @@ import Home from "./Home";
 import Navbar from "./Navbar";
 import styled from "styled-components";
 import Deployments from "./Deployments";
-import theme from "../utils/theme";
 import { ThemeProvider } from "styled-components";
 import { Subscribe } from "unstated";
 import ThemeContainer from "../containers/ThemeContainer";
