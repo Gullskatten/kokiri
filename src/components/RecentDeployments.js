@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Section } from "./Section";
 import { TitleMedium } from "./StyledTitles";
-import { SectionDivider } from "./Dividers";
 import DeploymentList from "./DeploymentList";
 import ContentLoader from "./ContentLoader";
 import { recentDeployments } from "../assets/sample/recent_deployments";
@@ -35,7 +34,7 @@ class RecentDeployments extends Component {
 
     return (
       <Section>
-        <TitleMedium darkest>Recent Deployments</TitleMedium>
+        <TitleMedium darkest>Recent Overall Deployments</TitleMedium>
         {isLoading ? (
           <ContentLoader />
         ) : (

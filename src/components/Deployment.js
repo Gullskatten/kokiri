@@ -51,7 +51,12 @@ const DeploymentContentWrapper = styled.div`
 const DeploymentMetaWrapper = styled.div`
   display: flex;
   align-items: center;
-  
+
+  @media all and (max-width: 700px) {
+    display: block;
+    margin: 0 auto;
+  }
+
   ${props =>
     props.top &&
     css`
@@ -61,7 +66,8 @@ const DeploymentMetaWrapper = styled.div`
   ${props =>
     props.bottom &&
     css`
-      margin-top: 1rem;
+      margin-top: 2rem;
+      justify-content: space-between;
     `};
 `;
 
@@ -100,9 +106,69 @@ const DeploymentArrowIndicator = styled.div`
   }
 `;
 
+const DeploymentDetailsOption = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  cursor: pointer;
+`;
+
+const DeploymentDetailsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const DeploymentDetailsInfo = styled.div`
+  margin: 10px;
+`;
+
+const DeploymentApplicationWrapper = styled.div`
+  margin: 10px;
+`;
+
+const Empty = styled.div``;
+
 class Deployment extends Component {
+  state = {
+    isDetailsOpen: false
+  };
+
+  toggleDetails = () => {
+    const { isDetailsOpen } = this.state;
+    this.setState({ isDetailsOpen: !isDetailsOpen });
+  };
+
+  renderApplicationsDeployed = () => {
+    const { deployment } = this.props;
+    if (!deployment.system || !deployment.system.applications) {
+      return <div>No applications..</div>;
+    }
+    return deployment.system.applications.map((app, idx) => {
+      return (
+        <DeploymentApplicationWrapper>
+        <DeploymentEntityHeader key={idx}>
+          <CircularIcon small>
+            <StyledMessage dark>
+              <FontAwesome name={app.icon || "question"} size="2x" />
+            </StyledMessage>
+          </CircularIcon>
+          <DeploymentEntityMeta>
+            <TitleLarge tight dark smallScreenAware>
+              {app.name}
+            </TitleLarge>
+            <StyledMessage normal tiny>
+            <StyledMessage darkest tiny>{app.type.name}</StyledMessage>{app.port ? ', running on port ' + app.port : ''} - <StyledMessage light tiny>{app.branch.name}</StyledMessage> - commit {app.branch.commit}
+            </StyledMessage>
+          </DeploymentEntityMeta>
+        </DeploymentEntityHeader>
+        </DeploymentApplicationWrapper>
+      );
+    });
+  };
+
   render() {
     const { deployment } = this.props;
+    const { isDetailsOpen } = this.state;
     return (
       <DeploymentWrapper
         completed={deployment.status.key === "COMPLETED"}
@@ -111,7 +177,12 @@ class Deployment extends Component {
         notStarted={deployment.status.key === "NOT_STARTED"}
       >
         <DeploymentMetaWrapper top>
-          <StyledMessage boxed dark><FontAwesome name={deployment.status.icon} spin={deployment.status.key === "IN_PROGRESS"}/></StyledMessage>
+          <StyledMessage boxed dark hideOnSmallScreen>
+            <FontAwesome
+              name={deployment.status.icon}
+              spin={deployment.status.key === "IN_PROGRESS"}
+            />
+          </StyledMessage>
           <StyledMessage darkest tiny>
             Started by{" "}
             <StyledMessage light tinyUnderlined clickable>
@@ -119,22 +190,30 @@ class Deployment extends Component {
             </StyledMessage>{" "}
             ({moment(deployment.createdAt).calendar()})
           </StyledMessage>
+          <StyledMessage marginLeft10 dark showOnSmallScreen>
+            <FontAwesome
+              name={deployment.status.icon}
+              spin={deployment.status.key === "IN_PROGRESS"}
+            />
+          </StyledMessage>
         </DeploymentMetaWrapper>
         <DeploymentContentWrapper>
           <DeploymentEntityHeader>
             <CircularIcon small>
               <StyledMessage dark>
                 <FontAwesome
-                  name={deployment.application.icon || "question"}
+                  name={deployment.system.icon || "question"}
                   size="2x"
                 />
               </StyledMessage>
             </CircularIcon>
             <DeploymentEntityMeta>
               <TitleLarge tight dark smallScreenAware>
-                {deployment.application.name}
+                {deployment.system.name}
               </TitleLarge>
-              <StyledMessage normal tiny>{deployment.version.name}</StyledMessage>
+              <StyledMessage normal tiny>
+                {deployment.description}
+              </StyledMessage>
             </DeploymentEntityMeta>
           </DeploymentEntityHeader>
           <DeploymentArrowIndicator>
@@ -171,7 +250,26 @@ class Deployment extends Component {
               logs.
             </StyledMessage>
           </StyledMessage>
+          <DeploymentDetailsOption onClick={() => this.toggleDetails()}>
+            <StyledMessage normal>
+              <FontAwesome
+                name={isDetailsOpen ? "chevron-up" : "chevron-down"}
+              />
+            </StyledMessage>
+          </DeploymentDetailsOption>
+          <Empty />
         </DeploymentMetaWrapper>
+        {isDetailsOpen && (
+          <DeploymentDetailsWrapper>
+            <DeploymentDetailsInfo>
+              <TitleLarge normal>Deployment details</TitleLarge>
+              <StyledMessage darkest>
+                The system {deployment.system.name} was deployed with the following specifications.
+              </StyledMessage>
+            </DeploymentDetailsInfo>
+            {this.renderApplicationsDeployed()}
+          </DeploymentDetailsWrapper>
+        )}
       </DeploymentWrapper>
     );
   }
