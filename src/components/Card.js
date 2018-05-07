@@ -1,9 +1,10 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import FontAwesome from "react-fontawesome";
 import { TitleLargeThin } from "./StyledTitles";
 import { CircularWrapper } from "./Common";
+import { StyledMessage } from "./StyledMessages";
 
 export const CardsContainer = styled.div`
   display: flex;
@@ -31,16 +32,23 @@ const CardWrapper = styled(({ active, ...rest }) => <Link {...rest} />)`
   @media all and (max-width: 700px) {
     flex-basis: 100%;
   }
+
+  ${props =>
+    props.disabled &&
+    css`
+      background: #eee;
+      color: #666;
+    `};
 `;
 
-
-const Card = ({ title, icon, path }) => {
+const Card = ({ title, icon, path, disabled }) => {
   return (
-    <CardWrapper to={`/${path}`}>
+    <CardWrapper to={`/${path}`} disabled={disabled}>
       <TitleLargeThin darkest>{title}</TitleLargeThin>
       <CircularWrapper dark toDarkest>
         <FontAwesome name={icon || "question"} size="4x" />
       </CircularWrapper>
+      {disabled && <StyledMessage lightest>Under construction :-)</StyledMessage>}
     </CardWrapper>
   );
 };

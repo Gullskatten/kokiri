@@ -30,6 +30,11 @@ export const StyledMessageBox = styled.div`
     css`
       background: ${props => props.theme.lightest};
     `};
+  ${props =>
+    props.disabled &&
+    css`
+      background: #eee;
+    `};
 `;
 
 export const StyledMessage = styled.span`
@@ -127,9 +132,13 @@ export const StyledMessage = styled.span`
       background: ${props => props.theme.lightest};
     `};
   ${props =>
+    props.bgDisabled &&
+    css`
+      background: #ccc;
+    `};
+  ${props =>
     props.tinyUnderlined &&
     css`
-      padding-bottom: 2px;
       border-bottom: 1px solid ${props => props.theme.normal};
     `};
 
@@ -139,9 +148,9 @@ export const StyledMessage = styled.span`
       margin-left: 4px;
     `};
 
-    ${props =>
-      props.marginLeft10 &&
-      css`
-        margin-left: 10px;
-      `};
+  ${props =>
+    props.marginLeft10 &&
+    css`
+      margin-left: 10px;
+    `};
 `;

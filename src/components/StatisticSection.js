@@ -27,7 +27,7 @@ export const StatisticSection = () => {
           3
         </CircularWrapper>
       </ColumnedFlexWrapper>
-      <StyledMessage bgDarkest boxed clickable tiny withIconRight>
+      <StyledMessage bgDisabled boxed clickable tiny withIconRight>
         View more statistics <FontAwesome name="arrow-right" />
       </StyledMessage>
       <SectionDivider />

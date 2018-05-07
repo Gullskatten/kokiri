@@ -8,16 +8,23 @@ export const EnvironmentSection = () => {
     <Section>
       <TitleLarge darkest>Environments</TitleLarge>
       <CardsContainer>
-        <Card title="Create New" icon="plus" path="environments/new" />
+        <Card
+          title="Create New"
+          icon="plus"
+          path="environments/new"
+          disabled={true}
+        />
         <Card
           title="Environment Overview"
           icon="server"
           path="environments/overview"
+          disabled={true}
         />
         <Card
           title="Manage Environments"
           icon="sliders"
           path="environments/manage"
+          disabled={true}
         />
       </CardsContainer>
     </Section>
