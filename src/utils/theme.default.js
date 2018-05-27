@@ -5,7 +5,7 @@ export default {
   normalWithAlpha: "#F4CDA555",
   light: "#F57A82",
   lightest: "#ED5276",
-  backgroundTop: "#3FB6A8",
-  backgroundBottom: "#7ED386",
-  key: "DEFAULT"
+  backgroundTop: "#ff766f",
+  backgroundBottom: "#ffae4a",
+  key: "Kokiri Theme"
 };

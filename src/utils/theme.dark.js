@@ -7,5 +7,5 @@ export default {
   lightest: "#1E272C",
   backgroundTop: "#010D17",
   backgroundBottom: "#011627",
-  key: "DARK"
+  key: "Dark Theme"
 };

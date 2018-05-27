@@ -7,5 +7,5 @@ export default {
   lightest: "#F0433A",
   backgroundTop: "#2E112D",
   backgroundBottom: "#C9283E",
-  key: "SUNSET"
+  key: "Sunset Theme"
 };

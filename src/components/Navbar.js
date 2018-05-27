@@ -6,6 +6,8 @@ import thumb from "../assets/img/oot/PNG/kokiri_sword.png";
 import ThemeContainer from "../containers/ThemeContainer";
 import { TitleHuge } from "./StyledTitles";
 
+import { Subscribe } from "unstated";
+import { Tooltip } from "react-tippy";
 
 const NavbarWrapper = styled.div`
   position: sticky;
@@ -110,13 +112,19 @@ export default class Navbar extends Component {
   renderOptions = (selectedTheme, themes, changeTheme) => {
     return themes.map((theme, idx) => {
       return (
-        <CircularOption
-          selected={selectedTheme.key === theme.key}
-          key={idx}
-          backgroundTop={theme.backgroundTop}
-          backgroundBottom={theme.backgroundBottom}
-          onClick={() => changeTheme(theme)}
-        />
+        <Tooltip
+          title={theme.key}
+          position="bottom"
+          trigger="mouseenter"
+        >
+          <CircularOption
+            selected={selectedTheme.key === theme.key}
+            key={idx}
+            backgroundTop={theme.backgroundTop}
+            backgroundBottom={theme.backgroundBottom}
+            onClick={() => changeTheme(theme)}
+          />
+        </Tooltip>
       );
     });
   };
@@ -139,7 +147,11 @@ export default class Navbar extends Component {
                     <span>oboygutt</span>
                   </AccountInfoWrapper>
                   <ThemeOptions>
-                    {this.renderOptions(state.selectedTheme, state.themes, changeTheme)}
+                    {this.renderOptions(
+                      state.selectedTheme,
+                      state.themes,
+                      changeTheme
+                    )}
                   </ThemeOptions>
                 </div>
               </FlexWrapper>
