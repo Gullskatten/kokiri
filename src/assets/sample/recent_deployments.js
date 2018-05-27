@@ -287,7 +287,7 @@ export const recentDeployments = [
       "key": "IN_PROGRESS",
       "icon": "refresh"
     },
-    "createdAt": "2018-05-08T22:15:23.000Z",
+    "createdAt": "2018-05-08T12:15:23.000Z",
     "createdBy": "RausMedSaus"
   }
 ]

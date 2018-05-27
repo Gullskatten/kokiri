@@ -4,7 +4,7 @@ import Return from "./Return";
 import RecentDeployments from "./RecentDeployments";
 import {TitleLarge} from "./StyledTitles";
 
-export default class Deployments extends Component {
+export default class DeploymentOverview extends Component {
   render() {
     return (
       <div>

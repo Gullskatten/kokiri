@@ -34,7 +34,7 @@ class RecentDeployments extends Component {
 
     return (
       <Section>
-        <TitleMedium darkest>Recent Overall Deployments</TitleMedium>
+        <TitleMedium darkest>Recent Deployments</TitleMedium>
         {isLoading ? (
           <ContentLoader />
         ) : (
