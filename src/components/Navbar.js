@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
-import { Subscribe } from "unstated";
 import thumb from "../assets/img/oot/PNG/kokiri_sword.png";
 import ThemeContainer from "../containers/ThemeContainer";
 import { TitleHuge } from "./StyledTitles";
