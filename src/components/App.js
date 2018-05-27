@@ -5,7 +5,7 @@ import NoMatch from "./NoMatch";
 import Home from "./Home";
 import Navbar from "./Navbar";
 import styled from "styled-components";
-import Deployments from "./Deployments";
+import DeploymentOverview from "./DeploymentOverview";
 import { ThemeProvider } from "styled-components";
 import { Subscribe } from "unstated";
 import ThemeContainer from "../containers/ThemeContainer";
@@ -37,7 +37,7 @@ class App extends Component {
                   <Route
                     exact
                     path="/deployments/overview"
-                    component={Deployments}
+                    component={DeploymentOverview}
                   />
                   <Route exact path="/deployments/new" component={Home} />
                   <Route exact path="/deployments/manage" component={Home} />

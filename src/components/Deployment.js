@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
-import { CircularIcon } from "./Common";
 import { TitleLarge } from "./StyledTitles";
 import FontAwesome from "react-fontawesome";
 import { StyledMessage } from "./StyledMessages";
 import moment from "moment";
+import { DeploymentEntity } from "./DeploymentEntity";
 
 const DeploymentWrapper = styled.div`
   display: block;
@@ -71,30 +71,6 @@ const DeploymentMetaWrapper = styled.div`
     `};
 `;
 
-const DeploymentEntityMeta = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 20px;
-
-  @media all and (max-width: 700px) {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-  }
-`;
-
-const DeploymentEntityHeader = styled.div`
-  display: inline-flex;
-  align-items: center;
-
-  @media all and (max-width: 750px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-`;
-
 const DeploymentArrowIndicator = styled.div`
   margin: 0 1.3rem;
 
@@ -144,23 +120,23 @@ class Deployment extends Component {
       return <div>No applications..</div>;
     }
     return deployment.system.applications.map((app, idx) => {
+      const delimiter = " - ";
+
+      const type = app.type.name
+        ? app.type.name + delimiter
+        : "Unknown app-type" + delimiter;
+      const port = app.port ? "Running on port " + app.port + delimiter : "";
+      const branch = app.branch.name ? app.branch.name + delimiter : "";
+      const commit = app.branch.commit ? "Commit-id: " + app.branch.commit : "";
+      const description = type + port + branch + commit;
+
       return (
-        <DeploymentApplicationWrapper>
-        <DeploymentEntityHeader key={idx}>
-          <CircularIcon small>
-            <StyledMessage dark>
-              <FontAwesome name={app.icon || "question"} size="2x" />
-            </StyledMessage>
-          </CircularIcon>
-          <DeploymentEntityMeta>
-            <TitleLarge tight dark smallScreenAware>
-              {app.name}
-            </TitleLarge>
-            <StyledMessage normal tiny>
-            <StyledMessage darkest tiny>{app.type.name}</StyledMessage>{app.port ? ', running on port ' + app.port : ''} - <StyledMessage light tiny>{app.branch.name}</StyledMessage> - commit {app.branch.commit}
-            </StyledMessage>
-          </DeploymentEntityMeta>
-        </DeploymentEntityHeader>
+        <DeploymentApplicationWrapper key={idx}>
+          <DeploymentEntity
+            title={app.name}
+            description={description}
+            icon={app.icon}
+          />
         </DeploymentApplicationWrapper>
       );
     });
@@ -198,24 +174,11 @@ class Deployment extends Component {
           </StyledMessage>
         </DeploymentMetaWrapper>
         <DeploymentContentWrapper>
-          <DeploymentEntityHeader>
-            <CircularIcon small>
-              <StyledMessage dark>
-                <FontAwesome
-                  name={deployment.system.icon || "question"}
-                  size="2x"
-                />
-              </StyledMessage>
-            </CircularIcon>
-            <DeploymentEntityMeta>
-              <TitleLarge tight dark smallScreenAware>
-                {deployment.system.name}
-              </TitleLarge>
-              <StyledMessage normal tiny>
-                {deployment.description}
-              </StyledMessage>
-            </DeploymentEntityMeta>
-          </DeploymentEntityHeader>
+          <DeploymentEntity
+            icon={deployment.system.icon}
+            title={deployment.system.name}
+            description={deployment.description}
+          />
           <DeploymentArrowIndicator>
             <StyledMessage dark hideOnSmallScreen>
               <FontAwesome name="chevron-right" />
@@ -224,24 +187,11 @@ class Deployment extends Component {
               <FontAwesome name="arrow-down" />
             </StyledMessage>
           </DeploymentArrowIndicator>
-          <DeploymentEntityHeader>
-            <CircularIcon small>
-              <StyledMessage dark>
-                <FontAwesome
-                  name={deployment.environment.icon || "question"}
-                  size="2x"
-                />
-              </StyledMessage>
-            </CircularIcon>
-            <DeploymentEntityMeta>
-              <TitleLarge tight dark smallScreenAware>
-                {deployment.environment.name}
-              </TitleLarge>
-              <StyledMessage normal tiny>
-                {deployment.environment.description}
-              </StyledMessage>
-            </DeploymentEntityMeta>
-          </DeploymentEntityHeader>
+          <DeploymentEntity
+            icon={deployment.environment.icon}
+            title={deployment.environment.name}
+            description={deployment.environment.description}
+          />
         </DeploymentContentWrapper>
         <DeploymentMetaWrapper bottom>
           <StyledMessage darkest tiny>
@@ -264,7 +214,8 @@ class Deployment extends Component {
             <DeploymentDetailsInfo>
               <TitleLarge normal>Deployment details</TitleLarge>
               <StyledMessage darkest>
-                The system {deployment.system.name} was deployed with the following specifications.
+                The system {deployment.system.name} was deployed with the
+                following specifications.
               </StyledMessage>
             </DeploymentDetailsInfo>
             {this.renderApplicationsDeployed()}
