@@ -115,6 +115,7 @@ export default class Navbar extends Component {
           title={theme.key}
           position="bottom"
           trigger="mouseenter"
+          key={idx}
         >
           <CircularOption
             selected={selectedTheme.key === theme.key}

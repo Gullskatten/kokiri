@@ -5,6 +5,9 @@ import FontAwesome from "react-fontawesome";
 import { StyledMessage } from "./StyledMessages";
 import moment from "moment";
 import { DeploymentEntity } from "./DeploymentEntity";
+import { CircularIcon } from "./Common";
+import { Tooltip } from "react-tippy";
+import Collapsible from "react-collapsible";
 
 const DeploymentWrapper = styled.div`
   display: block;
@@ -16,24 +19,24 @@ const DeploymentWrapper = styled.div`
   ${props =>
     props.completed &&
     css`
-      border-left: 7px solid #3fb6a8;
+      border-left: 7px solid ${props => props.theme.success};
     `};
 
   ${props =>
     props.failed &&
     css`
-      border-left: 7px solid #c9283e;
+      border-left: 7px solid ${props => props.theme.error};
     `};
 
   ${props =>
     props.inProgress &&
     css`
-      border-left: 7px solid #f4cda5;
+      border-left: 7px solid ${props => props.theme.warn};
     `};
   ${props =>
     props.notStarted &&
     css`
-      border-left: 7px solid #eee;
+      border-left: 7px solid #666;
     `};
 `;
 
@@ -92,6 +95,7 @@ const DeploymentDetailsOption = styled.div`
 const DeploymentDetailsWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  transition: max-height 0.2s ease-out;
 `;
 
 const DeploymentDetailsInfo = styled.div`
@@ -136,6 +140,7 @@ class Deployment extends Component {
             title={app.name}
             description={description}
             icon={app.icon}
+            status={app.deployStatus}
           />
         </DeploymentApplicationWrapper>
       );
@@ -153,12 +158,28 @@ class Deployment extends Component {
         notStarted={deployment.status.key === "NOT_STARTED"}
       >
         <DeploymentMetaWrapper top>
-          <StyledMessage boxed dark hideOnSmallScreen>
-            <FontAwesome
-              name={deployment.status.icon}
-              spin={deployment.status.key === "IN_PROGRESS"}
-            />
-          </StyledMessage>
+          <Tooltip
+            title={deployment.status.description}
+            position="bottom"
+            trigger="mouseenter"
+          >
+            <CircularIcon
+              tiny
+              marginRight10
+              success={deployment.status.key === "COMPLETED"}
+              error={deployment.status.key === "FAILED"}
+              warn={deployment.status.key === "IN_PROGRESS"}
+              disabled={deployment.status.key === "NOT_STARTED"}
+            >
+              <StyledMessage tiny>
+                <FontAwesome
+                  name={deployment.status.icon || "question"}
+                  size="2x"
+                  spin={deployment.status.key === "IN_PROGRESS"}
+                />
+              </StyledMessage>
+            </CircularIcon>
+          </Tooltip>
           <StyledMessage darkest tiny>
             Started by{" "}
             <StyledMessage light tinyUnderlined clickable>
@@ -200,6 +221,7 @@ class Deployment extends Component {
               logs.
             </StyledMessage>
           </StyledMessage>
+
           <DeploymentDetailsOption onClick={() => this.toggleDetails()}>
             <StyledMessage normal>
               <FontAwesome
@@ -209,7 +231,7 @@ class Deployment extends Component {
           </DeploymentDetailsOption>
           <Empty />
         </DeploymentMetaWrapper>
-        {isDetailsOpen && (
+        <Collapsible open={isDetailsOpen}>
           <DeploymentDetailsWrapper>
             <DeploymentDetailsInfo>
               <TitleLarge normal>Deployment details</TitleLarge>
@@ -220,7 +242,7 @@ class Deployment extends Component {
             </DeploymentDetailsInfo>
             {this.renderApplicationsDeployed()}
           </DeploymentDetailsWrapper>
-        )}
+        </Collapsible>
       </DeploymentWrapper>
     );
   }

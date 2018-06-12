@@ -7,5 +7,8 @@ export default {
   lightest: "#1E272C",
   backgroundTop: "#010D17",
   backgroundBottom: "#011627",
+  success: "#46B29D",
+  warn: "#E37B40",
+  error: "#DE5B49",
   key: "Dark Theme"
 };

@@ -9,7 +9,11 @@ export const DeploymentSection = () => {
     <Section>
       <TitleLarge darkest>Deployments</TitleLarge>
       <CardsContainer>
-        <Card title="Create New" icon="plus" path="deployments/new" disabled={true}/>
+        <Card 
+        title="Create New" 
+        icon="plus"
+        path="deployments/new" 
+        disabled={true}/>
         <Card
           title="Deployment Overview"
           icon="cube"

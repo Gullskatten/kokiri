@@ -15,10 +15,8 @@ class DeploymentList extends Component {
   renderDeployments = () => {
     const { deployments } = this.props;
 
-    console.log(deployments);
-
     return deployments.map((deployment, idx) => {
-      return <DeploymentPadder><Deployment key={idx} deployment={deployment} /></DeploymentPadder>;
+      return <DeploymentPadder key={idx}><Deployment key={idx} deployment={deployment} /></DeploymentPadder>;
     });
   };
 

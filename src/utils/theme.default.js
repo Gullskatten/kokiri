@@ -7,5 +7,8 @@ export default {
   lightest: "#ED5276",
   backgroundTop: "#ff766f",
   backgroundBottom: "#ffae4a",
+  success: "#46B29D",
+  warn: "#E37B40",
+  error: "#DE5B49",
   key: "Kokiri Theme"
 };

@@ -6,6 +6,21 @@ export const StyledMessageBox = styled.div`
   color: #fff;
 
   ${props =>
+    props.success &&
+    css`
+      background: ${props => props.theme.darkest};
+    `};
+  ${props =>
+    props.warn &&
+    css`
+      background: ${props => props.theme.warn};
+    `};
+  ${props =>
+    props.error &&
+    css`
+      background: ${props => props.theme.error};
+    `};
+  ${props =>
     props.darkest &&
     css`
       background: ${props => props.theme.darkest};
@@ -41,6 +56,21 @@ export const StyledMessage = styled.span`
   font-weight: 400;
   color: #fff;
 
+  ${props =>
+    props.success &&
+    css`
+      color: ${props => props.theme.success};
+    `};
+  ${props =>
+    props.warn &&
+    css`
+      color: ${props => props.theme.warn};
+    `};
+  ${props =>
+    props.error &&
+    css`
+      color: ${props => props.theme.error};
+    `};
   ${props =>
     props.darkest &&
     css`

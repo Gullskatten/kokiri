@@ -37,6 +37,13 @@ export const recentDeployments = [
             "id": 1,
             "name": "In Production"
           },
+          "deployStatus": {
+            "id": 3,
+            "name": "Completed",
+            "description": "Deployment of this application was successful.",
+            "key": "COMPLETED",
+            "icon": "check"
+          },
           "branch": {
             "name": "release/1.0",
             "commit": "121ce2b"
@@ -60,6 +67,13 @@ export const recentDeployments = [
             "id": 1,
             "name": "In Production"
           },
+          "deployStatus": {
+            "id": 3,
+            "name": "Completed",
+            "description": "Deployment of this application was successful.",
+            "key": "COMPLETED",
+            "icon": "check"
+          },
           "branch": {
             "name": "release/1.0",
             "commit": "b993f33"
@@ -80,6 +94,13 @@ export const recentDeployments = [
           "status": {
             "id": 1,
             "name": "In Production"
+          },
+          "deployStatus": {
+            "id": 3,
+            "name": "Completed",
+            "description": "Deployment of this application was successful.",
+            "key": "COMPLETED",
+            "icon": "check"
           },
           "branch": {
             "name": "develop",
@@ -150,6 +171,13 @@ export const recentDeployments = [
             "id": 1,
             "name": "In Production"
           },
+          "deployStatus": {
+            "id": 3,
+            "name": "Completed",
+            "description": "Deployment of this application was successful.",
+            "key": "COMPLETED",
+            "icon": "check"
+          },
           "branch": {
             "name": "develop",
             "commit": "yt7762b"
@@ -173,13 +201,20 @@ export const recentDeployments = [
             "id": 1,
             "name": "In Production"
           },
+          "deployStatus": {
+            "id": 3,
+            "name": "Completed",
+            "description": "Deployment of this application was successful.",
+            "key": "COMPLETED",
+            "icon": "check"
+          },
           "branch": {
             "name": "develop",
             "commit": "b7765u76"
           }
         },
         {
-          "id": 6,
+          "id": 7,
           "name": "DYNO Redis cache",
           "description": "Redis cache for DYNO Messages (images and content).",
           "icon": "tachometer",
@@ -194,13 +229,20 @@ export const recentDeployments = [
             "id": 1,
             "name": "In Production"
           },
+          "deployStatus": {
+            "id": 3,
+            "name": "Completed",
+            "description": "Deployment of this application was successful.",
+            "key": "COMPLETED",
+            "icon": "check"
+          },
           "branch": {
             "name": "develop",
             "commit": "bb543tn"
           }
         },
         {
-          "id": 5,
+          "id": 8,
           "name": "DYNO Authenticator",
           "description": "Authentication written in Node.",
           "url": "https://auth.dyno.no/",
@@ -217,13 +259,20 @@ export const recentDeployments = [
             "id": 1,
             "name": "In Production"
           },
+          "deployStatus": {
+            "id": 2,
+            "name": "In Progress",
+            "description": "Deployment of this application is in progress.",
+            "key": "IN_PROGRESS",
+            "icon": "refresh"
+          },
           "branch": {
             "name": "develop",
             "commit": "c889y65"
           }
         },
         {
-          "id": 4,
+          "id": 9,
           "name": "DYNO Users",
           "description": "PostgreSQL database containing DYNO users.",
           "icon": "database",
@@ -238,13 +287,20 @@ export const recentDeployments = [
             "id": 2,
             "name": "In Development"
           },
+          "deployStatus": {
+            "id": 1,
+            "name": "Not Started",
+            "description": "Deployment of this application has not started.",
+            "key": "NOT_STARTED",
+            "icon": "ellipsis-h"
+          },
           "branch": {
             "name": "develop",
             "commit": "d435tt5"
           }
         },
         {
-          "id": 5,
+          "id": 10,
           "name": "DYNO PGSQL Cluster",
           "description": "PostgreSQL database (clustered).",
           "icon": "database",
@@ -258,6 +314,13 @@ export const recentDeployments = [
           "status": {
             "id": 2,
             "name": "In Development"
+          },
+          "deployStatus": {
+            "id": 1,
+            "name": "Not Started",
+            "description": "Deployment of this application has not started.",
+            "key": "NOT_STARTED",
+            "icon": "ellipsis-h"
           },
           "branch": {
             "name": "develop",
