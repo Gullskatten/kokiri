@@ -183,4 +183,9 @@ export const StyledMessage = styled.span`
     css`
       margin-left: 10px;
     `};
+    ${props =>
+      props.marginRight10 &&
+      css`
+        margin-right: 10px;
+      `};
 `;

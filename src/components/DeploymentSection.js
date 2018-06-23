@@ -12,8 +12,8 @@ export const DeploymentSection = () => {
         <Card 
         title="Create New" 
         icon="plus"
-        path="deployments/new" 
-        disabled={true}/>
+        path="deployments/new"
+        /> 
         <Card
           title="Deployment Overview"
           icon="cube"

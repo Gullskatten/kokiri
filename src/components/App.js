@@ -9,6 +9,8 @@ import DeploymentOverview from "./DeploymentOverview";
 import { ThemeProvider } from "styled-components";
 import { Subscribe } from "unstated";
 import ThemeContainer from "../containers/ThemeContainer";
+import CreateDeployment from "./CreateDeployment";
+
 export const history = createHistory();
 
 const AppContainer = styled.div`
@@ -27,28 +29,38 @@ class App extends Component {
   render() {
     return (
       <Subscribe to={[ThemeContainer]}>
-        { ({state}) => {
-          return <ThemeProvider theme={state.selectedTheme}>
-            <Router history={history}>
-              <AppContainer>
-                <Navbar />
-                <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route
-                    exact
-                    path="/deployments/overview"
-                    component={DeploymentOverview}
-                  />
-                  <Route exact path="/deployments/new" component={Home} />
-                  <Route exact path="/deployments/manage" component={Home} />
-                  <Route exact path="/environments/overview" component={Home} />
-                  <Route exact path="/environments/new" component={Home} />
-                  <Route exact path="/environments/manage" component={Home} />
-                  <Route component={NoMatch} />
-                </Switch>
-              </AppContainer>
-            </Router>
-          </ThemeProvider>;
+        {({ state }) => {
+          return (
+            <ThemeProvider theme={state.selectedTheme}>
+              <Router history={history}>
+                <AppContainer>
+                  <Navbar />
+                  <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route
+                      exact
+                      path="/deployments/overview"
+                      component={DeploymentOverview}
+                    />
+                    <Route
+                      exact
+                      path="/deployments/new"
+                      component={CreateDeployment}
+                    />
+                    <Route exact path="/deployments/manage" component={Home} />
+                    <Route
+                      exact
+                      path="/environments/overview"
+                      component={Home}
+                    />
+                    <Route exact path="/environments/new" component={Home} />
+                    <Route exact path="/environments/manage" component={Home} />
+                    <Route component={NoMatch} />
+                  </Switch>
+                </AppContainer>
+              </Router>
+            </ThemeProvider>
+          );
         }}
       </Subscribe>
     );

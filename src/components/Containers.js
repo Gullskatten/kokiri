@@ -23,3 +23,7 @@ export const CardContainer = styled.div`
   padding: 20px;
   background: #fff;
 `;
+
+export const FullSizedContainer = styled.div`
+  top: 200px;
+`;

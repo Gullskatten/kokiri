@@ -37,7 +37,7 @@ export const FatSectionDivider = Divider.extend`
 
 export const SectionDivider = Divider.extend`
   border-bottom: 1px solid ${props => props.theme.normal};
-
+   
   ${props =>
     props.darkest &&
     css`

@@ -11,12 +11,11 @@ import { Tooltip } from "react-tippy";
 const NavbarWrapper = styled.div`
   position: sticky;
   top: 15px;
-  height: 60px;
   width: 100%;
   padding: 0 2rem;
   color: ${props => props.theme.normal};
   z-index: 1;
-
+  
   @media all and (max-width: 1600px) {
     position: relative;
   }
